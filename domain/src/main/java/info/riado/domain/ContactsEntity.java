@@ -1,9 +1,5 @@
-package com.mycompany.app.domain;
+package info.riado.domain;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import java.util.*;
 
 /**

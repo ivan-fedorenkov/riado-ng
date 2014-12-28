@@ -1,4 +1,4 @@
-package com.mycompany.app.domain;
+package info.riado.domain;
 
 import javax.persistence.*;
 
