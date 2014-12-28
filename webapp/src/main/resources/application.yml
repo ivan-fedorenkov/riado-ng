@@ -1,0 +1,28 @@
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  tomcat:
+    uri-encoding: "UTF-8"
+
+spring:
+
+  http:
+    encoding: "UTF-8"
+    force: true
+
+  freemarker:
+    allow-request-override: false
+    cache: true
+    check-template-location: true
+    charset: UTF-8
+    contentType: text/html
+
+  jpa:
+    properties:
+      useEncoding: true
+      characterEncoding: "UTF-8"
+    show-sql: true
+
+  messages:
+    basename: "messages"
+    cacheSeconds: -1
+    encoding: "UTF-8"
