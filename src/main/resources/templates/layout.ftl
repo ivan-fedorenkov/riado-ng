@@ -1,6 +1,7 @@
 <#import "/spring.ftl" as s>
 
 <#macro entity_layout title>
+<@compress>
     <html>
         <head>
             <meta charset='utf-8'/>
@@ -13,9 +14,11 @@
             <p>
                 <a href='<@s.url "/chambers"/>'>Chambers</a>
                 <a href='<@s.url "/lawyers"/>'>Lawyers</a>
+                <a href='<@s.url "/formations"/>'>Formations</a>
             </p>
 
             <#nested>
         </body>
     </html>
+</@compress>
 </#macro>

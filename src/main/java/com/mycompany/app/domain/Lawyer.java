@@ -1,9 +1,9 @@
 package com.mycompany.app.domain;
 
-import com.mycompany.app.domain.listeners.ContactsChangeListener;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +12,6 @@ import java.util.List;
  */
 
 @Entity
-@EntityListeners(ContactsChangeListener.class)
 public class Lawyer extends BaseEntity implements ContactsEntity {
 
 	@NotBlank
@@ -25,8 +24,12 @@ public class Lawyer extends BaseEntity implements ContactsEntity {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Contacts> contacts = new ArrayList<>();
 
+	@NotNull
 	@ManyToOne
 	private Chamber chamber;
+
+	@ManyToOne
+	private Formation formation;
 
 	public String getName() {
 		return name;
@@ -60,4 +63,11 @@ public class Lawyer extends BaseEntity implements ContactsEntity {
 		this.chamber = chamber;
 	}
 
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
 }

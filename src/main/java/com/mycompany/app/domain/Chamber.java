@@ -1,6 +1,5 @@
 package com.mycompany.app.domain;
 
-import com.mycompany.app.domain.listeners.ContactsChangeListener;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -12,7 +11,6 @@ import java.util.List;
  */
 
 @Entity
-@EntityListeners(ContactsChangeListener.class)
 public class Chamber extends BaseEntity implements ContactsEntity {
 
 	@NotBlank

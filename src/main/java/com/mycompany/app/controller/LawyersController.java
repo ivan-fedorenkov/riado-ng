@@ -17,7 +17,7 @@ public class LawyersController extends BaseController<Lawyer> {
 
 	@Autowired
 	public LawyersController(LawyersRepository repository) {
-		super(repository, "lawyers", EntityFactory.LAWYERS_FACTORY);
+		super(repository, "lawyer", EntityFactory.LAWYERS_FACTORY);
 	}
 
 }

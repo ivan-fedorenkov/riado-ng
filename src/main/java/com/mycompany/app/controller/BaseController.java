@@ -1,6 +1,7 @@
 package com.mycompany.app.controller;
 
 import com.mycompany.app.domain.BaseEntity;
+import com.mycompany.app.domain.ContactsEntity;
 import com.mycompany.app.domain.EntityFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,26 +24,32 @@ public abstract class BaseController<T extends BaseEntity> {
 
 	protected final JpaRepository<T, Long> repository;
 	protected final String entityName;
+	protected final String entityNamePlural;
 	protected final EntityFactory<T> factory;
 
 	protected final String indexView;
 	protected final String showView;
 	protected final String newView;
-	protected final String createView;
+	protected final String editView;
+	protected final String redirectView;
 
+	private final boolean isContactsEntity;
 	private final Pattern entityRequestPattern;
 
 	public BaseController(JpaRepository<T, Long> repository, String entityName, EntityFactory<T> factory) {
 		this.repository = repository;
 		this.entityName = entityName;
+		entityNamePlural = entityName.endsWith("s") ? entityName : entityName + "s";
 		this.factory = factory;
 
-		indexView = entityName + "/index";
-		showView = entityName + "/show";
-		newView = entityName + "/new";
-		createView = "redirect:/" + entityName;
+		indexView = entityNamePlural + "/index";
+		showView = entityNamePlural + "/show";
+		newView = entityNamePlural + "/new";
+		editView = entityNamePlural + "/edit";
+		redirectView = "redirect:/" + entityNamePlural;
 
-		entityRequestPattern = Pattern.compile("/" + entityName + "/(\\d+)[^\\d]*");
+		isContactsEntity = factory.create() instanceof ContactsEntity;
+		entityRequestPattern = Pattern.compile("/" + entityNamePlural + "/(\\d+)[^\\d]*");
 	}
 
 	@ModelAttribute
@@ -55,24 +62,48 @@ public abstract class BaseController<T extends BaseEntity> {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model, Pageable pageable) {
-		model.addAttribute(entityName, repository.findAll(pageable));
+		model.addAttribute(entityNamePlural, repository.findAll(pageable));
 		return indexView;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String get() {
+	public String get(Model model) {
 		return showView;
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public String _new() {
+	public String _new(@ModelAttribute T entity) {
+		if (isContactsEntity) {
+			ContactsEntity contactsEntity = (ContactsEntity) entity;
+			contactsEntity.setContacts(contactsEntity.getComplementedContacts());
+		}
 		return newView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(@ModelAttribute T entity) {
 		repository.save(entity);
-		return createView;
+		return redirectView;
+	}
+
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+	public String edit(@ModelAttribute T entity) {
+		if (isContactsEntity) {
+			ContactsEntity contactsEntity = (ContactsEntity) entity;
+			contactsEntity.setContacts(contactsEntity.getComplementedContacts());
+		}
+		return editView;
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+	public String patch(@ModelAttribute T entity) {
+		repository.save(entity);
+		return redirectView + "/" + entity.getId();
+	}
+
+	@SuppressWarnings("unchecked")
+	protected T getEntity(Model model) {
+		return (T) model.asMap().get(entityName);
 	}
 
 }
