@@ -3,8 +3,8 @@ CREATE TABLE `chamber`(
   `version` INTEGER NOT NULL,
   `name` VARCHAR(256) NOT NULL,
 
-  `created_at` DATE NOT NULL DEFAULT CURRENT_DATE,
-  `updated_at` DATE NOT NULL DEFAULT CURRENT_DATE
+  `created_at` DATE NOT NULL,
+  `updated_at` DATE NOT NULL
 );
 
 CREATE TABLE `formation`(
@@ -14,8 +14,8 @@ CREATE TABLE `formation`(
   `form` VARCHAR(16),
   `chamber_id` INTEGER NOT NULL,
 
-  `created_at` DATE NOT NULL DEFAULT CURRENT_DATE,
-  `updated_at` DATE NOT NULL DEFAULT CURRENT_DATE,
+  `created_at` DATE NOT NULL,
+  `updated_at` DATE NOT NULL,
 
   FOREIGN KEY (`chamber_id`) REFERENCES `chamber` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -30,8 +30,8 @@ CREATE TABLE `lawyer`(
   `chamber_id` INTEGER NOT NULL,
   `formation_id` INTEGER,
 
-  `created_at` DATE NOT NULL DEFAULT CURRENT_DATE,
-  `updated_at` DATE NOT NULL DEFAULT CURRENT_DATE,
+  `created_at` DATE NOT NULL,
+  `updated_at` DATE NOT NULL,
 
   FOREIGN KEY (`chamber_id`) REFERENCES `chamber` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
