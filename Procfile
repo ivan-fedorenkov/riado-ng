@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar webapp/target/*.jar --spring.profiles.active=production --debug
+web: java -Dserver.port=$PORT -jar webapp/target/*.jar --spring.profiles.active=production
