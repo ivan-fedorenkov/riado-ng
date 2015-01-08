@@ -12,24 +12,22 @@ import java.net.URISyntaxException;
 /**
  * @author ivan
  */
-//@Configuration
-//@Profile("production")
+@Configuration
+@Profile("production")
 public class RiadoDatabaseConfiguration {
 
-//	@Bean
+	@Bean
 	public DataSource dataSource() throws URISyntaxException {
-		URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
+		String username = System.getenv("DATABASE_USERNAME");
+		String password = System.getenv("DATABASE_PASSWORD");
+		String dbUrl = System.getenv("DATABASE_URL");
 
-		String username = dbUri.getUserInfo().split(":")[0];
-		String password = dbUri.getUserInfo().split(":")[1];
-		String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setUrl(dbUrl);
+		dataSource.setUsername(username);
+		dataSource.setPassword(password);
 
-		DriverManagerDataSource basicDataSource = new DriverManagerDataSource();
-		basicDataSource.setUrl(dbUrl);
-		basicDataSource.setUsername(username);
-		basicDataSource.setPassword(password);
-
-		return basicDataSource;
+		return dataSource;
 	}
 
 }
