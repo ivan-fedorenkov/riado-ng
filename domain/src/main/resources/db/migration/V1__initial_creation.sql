@@ -25,7 +25,7 @@ CREATE TABLE `lawyer`(
   `version` INTEGER NOT NULL,
   `name` VARCHAR(256) NOT NULL,
   `reg_num` VARCHAR(16),
-  `status` VARCHAR(8),
+  `status` VARCHAR(16),
   `source_url` VARCHAR(256),
   `chamber_id` INTEGER NOT NULL,
   `formation_id` INTEGER,

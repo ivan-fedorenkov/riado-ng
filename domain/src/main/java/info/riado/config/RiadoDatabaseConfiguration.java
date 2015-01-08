@@ -12,11 +12,11 @@ import java.net.URISyntaxException;
 /**
  * @author ivan
  */
-@Configuration
-@Profile("production")
+//@Configuration
+//@Profile("production")
 public class RiadoDatabaseConfiguration {
 
-	@Bean
+//	@Bean
 	public DataSource dataSource() throws URISyntaxException {
 		URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
 

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    initialize: false
+    sql-script-encoding: UTF-8
+    continue-on-error: false
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    max-active: 10
+    max-idle: 5
+    min-idle: 5
+    initial-size: 10
