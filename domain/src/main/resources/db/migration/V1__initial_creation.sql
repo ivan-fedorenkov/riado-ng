@@ -48,19 +48,19 @@ CREATE TABLE `chamber_contacts`(
   `chamber_id` INTEGER NOT NULL,
   `contacts_id` INTEGER NOT NULL,
   FOREIGN KEY (`chamber_id`) REFERENCES `chamber` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (`contacts_id`) REFERENCES `contact` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  FOREIGN KEY (`contacts_id`) REFERENCES `contact` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 CREATE TABLE `formation_contacts`(
   `formation_id` INTEGER NOT NULL,
   `contacts_id` INTEGER NOT NULL,
   FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (`contacts_id`) REFERENCES `contact` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  FOREIGN KEY (`contacts_id`) REFERENCES `contact` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 CREATE TABLE `lawyer_contacts`(
   `lawyer_id` INTEGER NOT NULL,
   `contacts_id` INTEGER NOT NULL,
   FOREIGN KEY (`lawyer_id`) REFERENCES `lawyer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (`contacts_id`) REFERENCES `contact` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  FOREIGN KEY (`contacts_id`) REFERENCES `contact` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
