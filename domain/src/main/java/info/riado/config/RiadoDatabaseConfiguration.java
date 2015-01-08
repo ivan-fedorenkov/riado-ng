@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
  * @author ivan
  */
 @Configuration
-@Profile("production")
+@Profile("development")
 public class RiadoDatabaseConfiguration {
 
 	@Bean
