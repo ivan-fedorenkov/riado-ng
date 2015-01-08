@@ -25,8 +25,8 @@
       </div>
     </div>
     <div class="span8-fixed">
-      <!--@thymesVar id="entity" type="info.riado.domain.ContactsEntity"-->
       <div id="contacts" class="tab-pane" th:fragment="tab(entity)" th:object="${entity}">
+        <!--@thymesVar id="entity" type="info.riado.domain.ContactsEntity"-->
         <div class="inner-well" th:unless="*{#lists.isEmpty(contacts)}">
           <h4>Контактная информация</h4>
           <dl class="dl-horizontal">
