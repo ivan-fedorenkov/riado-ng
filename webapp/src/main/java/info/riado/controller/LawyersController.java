@@ -1,11 +1,11 @@
 package info.riado.controller;
 
-import info.riado.domain.EntityFactory;
 import info.riado.domain.Lawyer;
-import info.riado.persistance.LawyersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author ivan
@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/lawyers")
-public class LawyersController extends BaseController<Lawyer> {
+public class LawyersController {
 
-	@Autowired
-	public LawyersController(LawyersRepository repository) {
-		super(repository, "lawyer", EntityFactory.LAWYERS_FACTORY);
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String get(Model model, @PathVariable("id") Lawyer lawyer) {
+		model.addAttribute(lawyer);
+		return "lawyers/show";
 	}
 
 }

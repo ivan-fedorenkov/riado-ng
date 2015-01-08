@@ -1,0 +1,771 @@
+html {
+  min-width:1000px;
+}
+body {
+  color:#43458B;
+  font-size:12px;
+  font-family: Arial,sans-serif;
+  line-height:14px;
+  min-width:1000px;
+}
+a {
+  font-weight:bold;
+  color:#43458B;
+  text-decoration:underline;
+}
+p {
+  margin-bottom:10px;
+  /*text-align:justify;*/
+}
+.header {
+  height:117px;
+  position:relative;
+  background:url(/Riado/resources/images/top-bg.jpg) no-repeat;
+}
+
+.phrase {
+  position:absolute;
+  left:75px;
+  top:20px;
+  width:731px;
+  height:80px;
+  background:url(/Riado/resources/images/phrase.png) no-repeat;
+  z-index:10;
+}
+
+.rimg {
+  position:absolute;
+  top:0px;
+  right:0px;
+  width:376px;
+  height:271px;
+  background:url(/Riado/resources/images/top-img.jpg) no-repeat;
+  z-index:1;
+}
+
+.middle {
+  
+  padding:20px 350px 20px 230px;
+  position:relative;
+  z-index:10;
+  
+}
+.full {
+  padding-left:20px;
+  padding-right:20px;
+  margin-top:80px;
+}
+.left {
+  float:left;
+  position:relative;
+  right:220px;
+  margin-top:-40px;
+  /*background:#EE1;
+  height:100px;*/
+  width:210px;
+  margin-left:-100%;
+}
+
+.right {
+  margin-top:150px;
+  float:right;
+  position:relative;
+  /*left:260px;*/
+  margin-right:-300px;
+  width:260px;
+}
+.content-block {
+  width:100%;
+  float:left;
+  background:#e8e8f2;/*DADAE8*/
+  border:1px solid gray;
+  border-top:1px solid #7576b8;
+}
+.top-links li{
+  display:block;
+  float:left;
+}
+.top-links li a{
+  display:block;
+  padding:5px 15px;
+  color:#43458b;
+  text-decoration:none;
+  font-size:14px;
+  text-transform:uppercase;
+  font-weight:normal ;
+}
+.top-links li.current a{
+  background:#e8e8f2;
+  border:1px solid gray;
+  border-bottom:0;
+  
+}
+.date {
+  /*font-weight:bold;*/
+  float:right;
+  display:inline-block;
+  color: #AAA;
+}
+.date2 {
+  font-weight:bold;
+}
+.author {
+  font-weight:bold;
+  font-style:italic;
+  color:black;
+}
+.news-block,.review-block,.sancpub {
+  padding:20px;
+  color:black;
+  clear:both;
+  background:url(/Riado/resources/images/n-b-bg.png) no-repeat center -3px;
+}
+.sancpub {
+  background:none;
+  padding-top:0;
+}
+.news-title {
+  font-weight:bold;
+  font-style:italic;
+}
+.news-title a.news-delete, a.spec-delete, a.adv-delete{
+  font-style:normal;
+  color:red;
+  /*display:inline-block;
+  float:right;*/
+  padding-left:20px;
+  text-decoration:none;
+}
+a.spec-delete, a.adv-delete{
+  padding:0;
+}
+.spec-table td,.spec-table th{
+  border:1px solid #6466a0;
+}
+.spec-table td select {
+  width:100%;
+}
+.spec-table {
+  margin-bottom:20px;
+}
+.adv-list {
+  width:100%;
+}
+.adv-list td, .adv-list th {
+  border:1px solid #6466a0;
+  padding:10px;
+  text-align:left;
+}
+.adv-list th,.spec-table th {
+  background:#bfc0d8;
+}
+.news-title a.news-delete span {
+  text-decoration:underline;
+}
+.review-block {
+  color:black;
+}
+.news-block.last {
+  background:transparent;
+}
+.nav {
+  margin:10px 0;
+  text-align:center;
+  clear:both;
+}
+.nav a {
+  padding:5px 10px;
+  font-weight:normal;
+  text-decoration:none;
+}
+.nav a.active {
+
+  font-weight:bold;
+  text-decoration:underline;
+
+}
+.p30 {
+  width:30%;
+}
+.files-list {
+  margin-top:5px;
+  margin-bottom:15px;
+}
+table td, table th {
+  padding:5px;
+}
+
+.advfb-error-msg {
+    color:red;
+    padding-left: 5px;
+    font-style: italic;
+}
+
+.login-error-msg {
+    color: red;
+    margin: -5px -5px 5px;
+    font-style: italic;
+}
+
+/* ---------------------- BOTTOM MENU --------------------------- */
+.bottom-menu {
+    /*float:left;*/
+    position:absolute;  
+    /*top:-50px;*/
+    /*margin-bottom:-50px;*/
+    float:left;
+    overflow:hidden;
+    width:100%;
+}
+.bottom-menu ul {
+  list-style:none;
+
+  clear:left;
+  position:relative;
+  text-align:center;
+  
+  float:left;
+  left:50%;
+}
+.bottom-menu li {
+  position:relative;
+  left:-50%;
+    list-style-type: none;
+    /*display:table-cell;*/
+    float:left;
+    display:block;
+    /*margin: 5px -3px 5px 0;*/
+    /*width:14%;*/
+    right:50%;
+    vertical-align:middle;
+}
+
+.bottom-menu ul li a {
+    text-align:center;
+    padding:0 20px;
+    font-size:11px;
+    text-decoration: none;
+    line-height:46px;
+    display:block;
+    color:#FFF;
+    text-decoration:none;
+}
+.bottom-menu ul li a:hover {
+    text-decoration:unedrline;
+}
+.add-review {
+  margin:20px;
+}
+.add-review .sidebar-h2 {
+  padding:5px 10px;
+  color:white;
+  font-size:14px;
+}
+.add-review  a {
+  font-size:12px;
+  line-height:14px;
+  font-weight:normal;
+}
+.add-review label {
+  margin-bottom:15px;
+}
+.negative-check {
+  margin-left:10px;
+}
+input.minus {
+  margin-left:18px;
+}
+
+
+.upload-pole
+{
+  display:inline-block;
+    position: relative; 
+    width: 32px; 
+    height: 32px; 
+    overflow: hidden;
+    /*top: 10px;*/
+/*}
+
+.upload-pole .upload-fake-btn
+{*/
+  background: url(/Riado/resources/images/attach.png) no-repeat;
+    width: 32px;
+  height: 32px;
+  display:inline-block; 
+    /*position: absolute;*/ 
+
+    /*background-color: #33BB00;*/
+    color: #FFFFFF;
+    border-style: solid;
+    cursor:pointer;
+}
+
+.delo-pole {
+  top:4px;
+  position:relative;
+}
+.save-icon
+{
+  display:inline-block;
+    position: relative; 
+  background: url(/Riado/resources/images/save.png) no-repeat;
+    /*width: 32px;*/
+  height: 32px;
+  display:inline-block; 
+  /*text-indent:-9999px;*/
+  padding-left:36px;
+    color: #6466a0;
+    cursor:pointer;
+    border:0;
+}
+.print-icon
+{
+  display:inline-block;
+    position: relative; 
+  background: url(/Riado/resources/images/print.png) no-repeat;
+  height: 32px;
+  display:inline-block; 
+  /*text-indent:-9999px;*/
+  padding-left:36px;
+    color: #6466a0;
+    cursor:pointer;
+    border:0;
+    margin-left:15px;
+}
+
+/*
+.upload-pole input
+{
+    font-size: 190px; 
+    position: absolute; 
+    right: 0px; 
+    top: 0px; 
+    opacity: 0; 
+    
+    filter: alpha(opacity=0); 
+    -ms-filter: "alpha(opacity=0)"; 
+    -khtml-opacity: 0; 
+    -moz-opacity: 0;
+}*/
+.file-up-error {
+  color:red;
+  font-style:italic;
+}
+.file-up-success {
+  color:green;
+}
+.uploaded {
+  padding:5px 0;
+  margin:0;
+}
+.uploaded li{
+  line-height:16px;
+  padding:5px 0;
+  list-style:square inside !important;
+}
+/*
+.upload-pole {
+overflow: hidden;
+width: 32px;
+height: 32px;
+cursor: pointer;
+display:inline-block;
+background: url(../Riado/resources/images/attach.png) no-repeat;
+position:relative;
+top:10px;
+}
+.upload-pole input {
+opacity: 0;
+filter: alpha(opacity:0);
+font-size: 199px;
+cursor: pointer;
+padding: 0px;
+margin: 0px;
+border: none;
+margin-left: -450px;
+}*/
+.quest {
+overflow: hidden;
+width: 32px;
+height: 32px;
+cursor: pointer;
+display:inline-block;
+background: url(/Riado/resources/images/info.png) no-repeat;
+text-indent:-9999px;
+position:relative;
+/*top:-10px;*/
+}
+.block1,.block2,.block3 {
+  padding:10px 0;
+}
+textarea {
+  width:100%;
+  height:100px;
+  margin-bottom:20px;
+}
+.add-review .advsrch-btn {
+  margin-top:0 !important;
+}
+.MultiFile-remove {
+  display:inline-block;
+  width:16px;
+  height:16px;
+  background:url(/Riado/resources/images/delete.png) no-repeat center;
+  text-indent:-9999px;
+}
+.MultiFile-label {
+  padding:0 0 5px 0; 
+}
+.sidebar-block {
+  padding:5px;
+  margin:10px 0;
+}
+.sidebar-h, .sidebar-h2, .sidebar-h22 {
+  background:url(/Riado/resources/images/bl-h-bg.png) repeat-y top left;
+  line-height:24px;
+  padding-left:15px;
+  color:#FFF;
+  margin:15px 0;
+ 
+}
+
+.sidebar-h2 {
+  background:url(/Riado/resources/images/bl-h-bg2.png) repeat-y top left;
+}
+.sidebar-h22 {
+  background:url(/Riado/resources/images/bl-h-bg22.png) repeat-y top left;
+  left:-20px;
+  position:relative;
+  font-size:14px;
+  padding:5px 0 5px 15px;
+}
+.menu {
+  margin:0 20px 0 10px;
+}
+.menu li{
+  display:block;
+  margin:5px 0;
+}
+.menu li a {
+  padding:5px 10px;
+  display:block;
+  text-decoration:none;
+  color:#FFF;
+  font-weight:normal;
+  background:#6466a0;
+}
+.menu li ul li a{
+  background:transparent !important;
+  color:#6466a0;
+}
+.footer {
+  height:46px;
+  background:#61639e;
+  min-width:1000px;
+}
+.login-form {
+  margin:0 20px 0 10px;
+}
+.login-form label {
+  display:block;
+  padding: 0 0 10px 0;
+}
+.login-form input {
+  margin-bottom:10px;
+}
+.login-form p{
+  padding-left:5px;
+  text-align:left;
+}
+.login-btn, .advsrch-btn, .addnews-btn {
+  background:#61639e;
+  border:0;
+  cursor:pointer;
+  color:#FFF;
+  padding:5px 15px;
+  margin:0 0 0 0;
+}
+.register-link {
+  display:block;
+}
+.advsrch-btn {
+  margin-left:0;
+}
+.adv-name {
+  line-height:20px;
+  padding-top:10px;
+}
+
+.adv-name img {
+  padding:2px;
+  border:1px solid #61639e;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom:20px;
+  margin-left:10px;
+}
+
+.standart-image {
+    max-width: 100px; 
+    max-height:100px; 
+    border: 1px solid #61639E; 
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+    padding: 2px;
+}
+
+.half-size-image {
+    max-width: 50px; 
+    max-height:50px; 
+    border: 1px solid #61639E; 
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+    padding: 2px;
+}
+
+.market-left-img {
+  padding:2px;
+  border:1px solid #61639e;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  max-width:80px;
+  max-height:80px;
+  /*margin-bottom:20px;*/
+  margin-left:55px;
+}
+.market-left-text {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.region-list {
+  list-style:disc outside;
+  margin-left:20px;
+}
+.region-list li{
+  line-height:16px;
+  margin-bottom:5px;
+}
+
+.region-list a{
+    font-weight: normal;
+}
+
+input[type='text'] {
+    width:200px;
+}
+
+input[type='password'] {
+    width:200px;
+}
+
+.login-form input[type='text']{
+    width:auto;
+}
+
+.login-form input[type='password']{
+    width:auto;
+}
+
+select {
+  border:1px solid #61639e;
+ 
+  /*background:#61639e;*/
+  width: 212px;
+  color: #61639e;
+}
+.right select{
+  width:100%;
+  margin-top:10px;
+}
+
+.sex-select {
+    width: auto;
+}
+
+input[type=text],input[type=password],textarea {
+  border:1px solid #61639e;
+  padding:2px 5px;
+  color: #61639e;
+}
+.region-form,.district-form,.advsrch-form,.advedu-form {
+  margin:0 20px;
+}
+.advsrch-form input[type=text],.advedu-form input[type=text]{
+  width:205px;
+}
+.sorting-line {
+  font-size:9px !important;
+  left:-20px;
+  position:relative;
+  margin-top:10px;
+}
+.sorting-line a{
+  font-weight:normal;
+  font-family:verdana;
+}
+.sorting-line a.active {
+  font-weight:bold;
+ 
+  
+}
+.invisible {
+  display:none;
+}
+.content-block .tab {
+  display:none;
+}
+.content-block div.active {
+  display:block;
+}
+.fleft {
+  float:left;
+}
+img.fleft {
+  margin-right:10px;
+}
+.fright {
+  float:right;
+}
+img.fright {
+  margin-left:10px;
+}
+.clear {
+  clear:both;
+}
+.content-block ul li {
+  padding:5px 0 5px 20px;
+  list-style:disc inside;
+}
+
+
+/* ============ ADVINFO TAB ============= */
+
+.full-advinfo {
+  padding:10px 20px 20px 20px;
+}
+.full-adv-face {
+  margin-right:30px;
+  margin-bottom:20px;
+  border:1px solid #61639e;
+  padding:2px;
+  background:#FFF;
+}
+.full-adv-name {
+  font-size:14px;
+  text-transform:uppercase;
+  line-height:30px;
+}
+.add-edu {
+  display:block;
+  float:right;
+  /*margin-right:100px;*/
+  width:111px;
+  height:31px;
+  text-indent:-9999px;
+  background:url(/Riado/resources/images/add-edu.png) no-repeat 0 0;
+}
+.icon-cab {
+  background:url(/Riado/resources/images/adv-icons.png) no-repeat 0px 0px;
+  line-height:20px;
+  padding-left:40px;
+}
+.icon-tel {
+  background:url(/Riado/resources/images/adv-icons.png) no-repeat 0px -30px;
+  line-height:30px;
+  height:30px;
+  padding-left:40px;
+}
+.icon-address {
+  background:url(/Riado/resources/images/adv-icons.png) no-repeat 0px -70px;
+  line-height:30px;
+  height:30px;
+  padding-left:40px;
+}
+.icon-email {
+  background:url(/Riado/resources/images/adv-icons.png) no-repeat 0px -102px;
+  line-height:30px;
+  height:30px;
+  padding-left:40px;
+}
+.icon-www {
+  background:url(/Riado/resources/images/adv-icons.png) no-repeat 0px -130px;
+  line-height:30px;
+  height:30px;
+  padding-left:40px;
+}
+.adv-edit input {
+  width:200px;
+}
+
+.spec-list li{
+  line-height:20px;
+  padding:10px 0 0 0 !important;
+  /*color:#222;*/
+  list-style:none !important;
+  
+}
+.spec-list ul li{
+  margin-left:40px;
+  text-indent:25px;
+  background:url(/Riado/resources/images/spec-li.png) no-repeat 0px 0px;
+}  
+
+.del-photo-link{
+    font-weight: normal;
+}
+
+.update-adv-spec {
+  margin: 20px 0px 0px 0px;
+  padding-top: 15px;
+  clear:both;
+  background:url(/Riado/resources/images/n-b-bg.png) no-repeat center -3px;
+}
+
+.advanced-adv-search-outer {
+    margin-top: 10px;
+    position: relative;
+}
+
+.advanced-adv-search-checkbox {
+    margin-top: 10px;
+    margin-left: -4px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.dotted {
+    border-bottom: 1px dotted black;
+}
+
+.hide {}
+.hide-control {}
+.hide-area {}
+
+.hide-default {}
+
+.captcha {
+    margin-bottom:10px;
+}
+
+.contacts-icon {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.tooltip {
+    display: none;
+    /*height: 100px;*/
+    padding: 10px 10px 10px 10px;
+    max-width: 200px;
+    background: #e8e8f2;/*DADAE8*/
+    border: 1px solid gray;
+}

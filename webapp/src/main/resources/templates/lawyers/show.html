@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:r="http://www.riado.info">
+<!--@thymesVar id="lawyer" type="info.riado.domain.Lawyer"-->
+<head th:include="layout :: head (${lawyer.name} + ' (' + ${lawyer.regNum} + ')')">
+  <meta charset='utf-8'/>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <title>Адвокат Иванов Иван Иванович (01/01) / РИАДО</title>
+
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
+  <link href="../../public/assets/css/application.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../../public/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" media="screen" rel="stylesheet" type="text/css"/>
+
+  <script src="../../public/assets/vendor/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/jquery.linkedselect.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/global_functions.js" type="text/javascript"></script>
+</head>
+
+<body th:object="${lawyer}">
+  <div class="container" th:include="layout :: header_container">
+
+    <div class="row" id="header">
+      <div class="span12">
+        <img src="../../public/assets/images/header.jpg" />
+      </div>
+    </div>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li>
+              <a href="#">Главная</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container" th:include="entity_layout :: entity_content_container (${lawyer}, 'lawyers/show')">
+    <div class="row">
+      <div class="span12">
+        <div class="well">
+          <div th:fragment="entity_header">
+            <h1 class="well-header" th:utext="'&lt;span&gt;Адвокат: &lt;/span&gt;' + *{name}"><span>Адвокат: </span>Иванов Иван Иванович</h1>
+          </div>
+
+          <div class="row">
+            <div class="span4" th:fragment="left_content">
+              <div class="inner-well">
+                <ul class="navlist-side navlist-small">
+                  <li><a href="#main" data-toggle="tab">Главная</a></li>
+                  <li th:with="inactive=*{#lists.isEmpty(contacts)}">
+                    <a href="#contacts" data-toggle="tab" th:class="${inactive} ? 'inactive'" th:href="${inactive} ? 'javascript:void(0);' : '#contacts'">Контакты</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="chamber-block inner-well" th:with="chamber=*{chamber}">
+                <h4>Реестровая информация</h4>
+                <a class="uncolored" href="../chambers/show.html" r:href="${chamber}">
+                  <img class="chamber-logo" src="../../public/assets/images/regions/0.png" r:chamber_logo_src="${chamber}" />
+                  <div class="chamber-name">
+                    <strong th:text="${chamber.name}">Федеральная палата адвокатов Российской Федерации</strong>
+                  </div>
+                </a>
+
+                <ul class="unstyled">
+                  <li><strong>Статус адвоката: </strong><th:block th:text="*{{status}}">Статус активен</th:block></li>
+                  <li><strong>Реестровый номер: </strong><th:block th:text="*{regNum}">01/01</th:block></li>
+                  <li><strong>Актуальность информации: </strong><th:block th:text="*{{updatedAt}}">31.12.2014</th:block></li>
+                  <li th:if="*{sourceUrl}"><strong>Официальный источник: </strong>
+                    <a href="#" class="uncolored" th:href="*{sourceUrl}">Минюст РФ <i class="icon-share icon-pulled-up"></i></a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="inner-well" th:if="*{formation}">
+                <h4>Адвокатское образование</h4>
+                <a class="uncolored" href="../formations/show.html" r:href="*{formation}" th:text="*{formation.name}">Адвокатский кабинет "Рога и копыта"</a>
+              </div>
+            </div>
+            <div class="span8-fixed" th:fragment="right_content">
+              <div class="tab-content">
+                <div id="main" class="tab-pane">
+                  <div class="inner-well">
+                    Главная вкладка
+                  </div>
+                </div>
+                <div id="contacts" class="tab-pane" th:include="contacts/tab :: tab(${lawyer})">
+                  <div class="inner-well">
+                    <h4>Контактная информация</h4>
+                    <dl class="dl-horizontal">
+                      <dt>Адрес:</dt>
+                      <dd><span class="muted">информация отсутствует</span></dd>
+
+                      <dt>Телефон:</dt>
+                      <dd><span class="muted">информация отсутствует</span></dd>
+
+                      <dt>Веб-сайт:</dt>
+                      <dd><span class="muted">информация отсутствует</span></dd>
+
+                      <dt>Электронный адрес:</dt>
+                      <dd><span class="muted">информация отсутствует</span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <span th:include="layout :: js_span">
+    <script src="../../public/assets/vendor/twitter-bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/wysihtml5-0.3.0_rc2/wysihtml5-0.3.0_rc2.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5.ru-RU.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/ajaxupload.3.5/ajaxupload.3.5.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/advocate_feedback_form.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/acol.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/profile.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/contacts.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/post_and_put_links.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/professions_tagsinput.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/application.js" type="text/javascript"></script>
+  </span>
+</body>
+</html>

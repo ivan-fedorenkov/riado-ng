@@ -1,13 +1,11 @@
 package info.riado.controller;
 
-import info.riado.domain.EntityFactory;
 import info.riado.domain.Formation;
-import info.riado.persistance.FormationsRepository;
-import info.riado.persistance.LawyersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author ivan
@@ -15,22 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/formations")
-public class FormationsController extends BaseController<Formation> {
+public class FormationsController {
 
-	private final LawyersRepository lawyersRepository;
-
-	@Autowired
-	public FormationsController(FormationsRepository repository, LawyersRepository lawyersRepository) {
-		super(repository, "formation", EntityFactory.FORMATIONS_FACTORY);
-
-		this.lawyersRepository = lawyersRepository;
-	}
-
-	@Override
-	public String get(Model model) {
-		Formation formation = getEntity(model);
-		formation.setLawyers(lawyersRepository.findLawyersByFormation(formation));
-		return super.get(model);
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String get(Model model, @PathVariable("id") Formation formation) {
+		model.addAttribute(formation);
+		return "formations/show";
 	}
 
 }

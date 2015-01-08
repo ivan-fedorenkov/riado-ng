@@ -1,10 +1,13 @@
 package info.riado.domain;
 
+import info.riado.lifecycle.ModificationDateListener;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,7 +15,8 @@ import java.util.List;
  */
 
 @Entity
-public class Formation extends BaseEntity implements ContactsEntity {
+@EntityListeners({ModificationDateListener.class})
+public class Formation extends JpaEntity implements DatesAwareEntity, ContactsEntity {
 
 	@NotBlank
 	private String name;
@@ -25,8 +29,16 @@ public class Formation extends BaseEntity implements ContactsEntity {
 	@ManyToOne
 	private Chamber chamber;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Contacts> contacts = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Contact> contacts = new ArrayList<>();
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd.MM.yyyy")
+	private Date createdAt = new Date();
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd.MM.yyyy")
+	private Date updatedAt = new Date();
 
 	private transient List<Lawyer> lawyers;
 
@@ -55,12 +67,12 @@ public class Formation extends BaseEntity implements ContactsEntity {
 	}
 
 	@Override
-	public List<Contacts> getContacts() {
+	public List<Contact> getContacts() {
 		return contacts;
 	}
 
 	@Override
-	public void setContacts(List<Contacts> contacts) {
+	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
 	}
 
@@ -70,6 +82,26 @@ public class Formation extends BaseEntity implements ContactsEntity {
 
 	public void setLawyers(List<Lawyer> lawyers) {
 		this.lawyers = lawyers;
+	}
+
+	@Override
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	@Override
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	@Override
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	@Override
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public enum Form { CABINET, COLLEGE, BUREAU, CONSULTATION }
