@@ -2,6 +2,7 @@ package info.riado.thymeleaf;
 
 import info.riado.domain.Chamber;
 import info.riado.domain.Formation;
+import info.riado.domain.News;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
@@ -11,6 +12,8 @@ import org.thymeleaf.processor.attr.AbstractSingleAttributeModifierAttrProcessor
 import org.thymeleaf.standard.expression.IStandardExpression;
 import org.thymeleaf.standard.expression.IStandardExpressionParser;
 import org.thymeleaf.standard.expression.StandardExpressions;
+
+import java.util.Optional;
 
 /**
  * @author ivan
@@ -38,7 +41,11 @@ public class HrefAttrProcessor extends AbstractSingleAttributeModifierAttrProces
 
 		final IStandardExpression expression = expressionParser.parseExpression(configuration, arguments, attributeValue);
 
-		final Object object = expression.execute(configuration, arguments);
+		Object object = expression.execute(configuration, arguments);
+
+		if (object instanceof Optional)
+			object = ((Optional) object).get();
+
 		if (object instanceof Chamber) {
 			ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentContextPath();
 			builder.path("/chambers/{id}");
@@ -47,6 +54,10 @@ public class HrefAttrProcessor extends AbstractSingleAttributeModifierAttrProces
 			ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentContextPath();
 			builder.path("/formations/{id}");
 			return builder.buildAndExpand(((Formation) object).getId()).toUriString();
+		} else if (object instanceof News) {
+			ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentContextPath();
+			builder.path("/news/{id}");
+			return builder.buildAndExpand(((News) object).getId()).toUriString();
 		} else {
 			throw new TemplateProcessingException("Can't create href for object of type: " + object.getClass());
 		}
