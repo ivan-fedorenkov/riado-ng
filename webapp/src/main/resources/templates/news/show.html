@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:r="http://www.riado.info">
 <!--@thymesVar id="news" type="info.riado.domain.News"-->
-<head th:include="layout :: head (${news.title})">
+<head th:include="layout :: head (${news.title} + ' / Новости')">
   <meta charset='utf-8'/>
   <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-  <title>Рога и копыта закрылись на веки / РИАДО</title>
+  <title>Рога и копыта закрылись на веки / Новости / РИАДО</title>
 
   <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
   <link href="../../public/assets/css/application.css" media="screen" rel="stylesheet" type="text/css"/>

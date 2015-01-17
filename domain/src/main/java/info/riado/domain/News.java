@@ -1,5 +1,7 @@
 package info.riado.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 
@@ -8,6 +10,8 @@ import javax.persistence.Lob;
  */
 @Entity
 public class News extends TextEntity {
+
+	@NotBlank
 	private String title;
 
 	@Lob

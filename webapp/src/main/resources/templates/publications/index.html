@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:r="http://www.riado.info">
-<head th:include="layout :: head ('Новости')">
+<head th:include="layout :: head ('Публикации адвокатов')">
   <meta charset='utf-8'/>
   <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-  <title>Новости / РИАДО</title>
+  <title>Публикации адвокатов / РИАДО</title>
 
   <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
   <link href="../../public/assets/css/application.css" media="screen" rel="stylesheet" type="text/css"/>
@@ -38,21 +38,24 @@
 
 </div>
 
-<div class="container" th:include="layout :: content_container ('news/index')">
+<div class="container" th:include="layout :: content_container ('publications/index')">
   <div class="row" th:fragment="content">
     <div class="span12">
       <div class="row">
         <div class="span8">
           <div class="well">
-            <h1 class="well-header">Новости</h1>
-            <div class="inner-well" th:each="record : ${newsList}" th:object="${record}">
+            <h1 class="well-header">Публикации адвокатов</h1>
+            <div class="inner-well" th:each="publication : ${publications}" th:object="${publication}">
               <span class="date" th:text="*{{createdAt}}">01.01.2014</span>
-              <h4><a class="uncolored" href="#" r:href="${record}" th:text="*{title}">Заголовок новости</a></h4>
-              <p th:text="*{preview}">Превью новости</p>
-              <p><strong><a href="#" r:href="${record}">Подробнее</a></strong></p>
+              <blockquote>
+                <h4><a href="#" r:href="${publication}" class="uncolored" th:text="*{title}">Заголовок публикации</a></h4>
+                <small><a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a></small>
+              </blockquote>
+              <p th:text="${textHelper.preview(publication.text)}">Превью публикации</p>
+              <p><strong><a href="#" r:href="${publication}">Подробнее</a></strong></p>
             </div>
 
-            <div class="pagination pagination-centered" th:include="pagination :: pagination(${newsList}, '/news')">
+            <div class="pagination pagination-centered" th:include="pagination :: pagination(${publications}, '/publications')">
               <ul>
                 <li class="active"><a href="#">1</a></li>
               </ul>

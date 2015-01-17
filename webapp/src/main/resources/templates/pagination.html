@@ -21,7 +21,7 @@
   <div class="row">
     <div class="span12">
       <div class="pagination pagination-centered" th:fragment="pagination(page, paginationUrl)">
-        <ul th:with="totalPages=${page.totalPages},current=${page.number}">
+        <ul th:if="${page.totalPages > 1}" th:with="totalPages=${page.totalPages},current=${page.number}">
           <li th:if="${page.hasPrevious()}">
             <a href="#" th:href="@{${paginationUrl}(page=${current - 1})}">&laquo;</a>
           </li>
