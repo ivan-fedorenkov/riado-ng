@@ -64,6 +64,10 @@ public class HrefAttrProcessor extends AbstractSingleAttributeModifierAttrProces
 			ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentContextPath();
 			builder.path("/publications/{id}");
 			return builder.buildAndExpand(((Publication) object).getId()).toUriString();
+		} else if (object instanceof Feedback) {
+			ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentContextPath();
+			builder.path("/feedbacks/{id}");
+			return builder.buildAndExpand(((Feedback) object).getId()).toUriString();
 		} else {
 			throw new TemplateProcessingException("Can't create href for object of type: " + object.getClass());
 		}

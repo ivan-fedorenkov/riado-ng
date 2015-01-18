@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:r="http://www.riado.info">
-<head th:include="layout :: head ('Публикации адвокатов')">
+<head th:include="layout :: head ('Отзывы на адвокатов')">
   <meta charset='utf-8'/>
   <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-  <title>Публикации адвокатов / РИАДО</title>
+  <title>Отзывы на адвокатов / РИАДО</title>
 
   <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
   <link href="../../public/assets/css/application.css" media="screen" rel="stylesheet" type="text/css"/>
@@ -38,24 +38,21 @@
 
 </div>
 
-<div class="container" th:include="layout :: content_container ('publications/index')">
+<div class="container" th:include="layout :: content_container ('feedbacks/index')">
   <div class="row" th:fragment="content">
     <div class="span12">
       <div class="row">
         <div class="span8">
           <div class="well">
-            <h1 class="well-header">Публикации адвокатов</h1>
-            <div class="inner-well" th:each="publication : ${publications}" th:object="${publication}">
+            <h1 class="well-header">Отзывы на адвокатов</h1>
+            <div class="inner-well" th:each="feedback : ${feedbacks}" th:object="${feedback}">
               <span class="date" th:text="*{{createdAt}}">01.01.2014</span>
-              <blockquote>
-                <h4><a href="#" r:href="${publication}" class="uncolored" th:text="*{title}">Заголовок публикации</a></h4>
-                <small><a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a></small>
-              </blockquote>
-              <p th:text="${textHelper.preview(publication.text)}">Превью публикации</p>
-              <p><strong><a href="show.html" r:href="${publication}">Подробнее</a></strong></p>
+              <h4>Отзыв на адвоката: <a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a></h4>
+              <p th:utext="${textHelper.feedbackPreview(feedback.text)}">Превью отзыва</p>
+              <p><strong><a href="show.html" r:href="${feedback}">Подробнее</a></strong></p>
             </div>
 
-            <div class="pagination pagination-centered" th:include="pagination :: pagination(${publications}, '/publications')">
+            <div class="pagination pagination-centered" th:include="pagination :: pagination(${feedbacks}, '/feedbacks')">
               <ul>
                 <li class="active"><a href="#">1</a></li>
               </ul>

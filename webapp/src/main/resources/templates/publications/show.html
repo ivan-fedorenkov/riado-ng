@@ -93,10 +93,10 @@
           <!--@thymesVar id="last10publications" type="java.util.List<info.riado.domain.Publication"-->
           <div class="well" th:unless="${#lists.isEmpty(last10publications)}">
             <h2 class="well-header">Другие публикации адвоката</h2>
-            <ul>
-              <li th:each="p : ${last10publications}">
-                <a href="#" r:href="${p}" th:text="${p.title}">Заголовок другой публикации адвоката</a>
-              </li>
+            <ul class="unstyled" th:include="lawyers/info_block :: info_block(${publication.lawyer})">
+              <li>Адвокат: <a href="../lawyers/show.html">Иванов Иван Иванович</a></li>
+              <li><a class="uncolored" href="../chambers/show.html">Федеральная палата адвокатов Российской Федерации</a></li>
+              <li>Реестровый номер: <span>01/01</span></li>
             </ul>
           </div>
         </div>

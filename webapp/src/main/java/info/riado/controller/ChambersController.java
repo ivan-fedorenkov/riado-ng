@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/chambers")
 public class ChambersController {
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String get(Model model, @PathVariable("id") Chamber chamber) {
+	@RequestMapping(value = "/{chamber}", method = RequestMethod.GET)
+	public String get(Model model, @PathVariable Chamber chamber) {
 		model.addAttribute(chamber);
 		return "chambers/show";
 	}

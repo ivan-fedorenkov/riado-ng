@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:r="http://www.riado.info">
+<!--@thymesVar id="feedback" type="info.riado.domain.Feedback"-->
+<head th:include="layout :: head ('Отзыв на адвоката ' + ${feedback.lawyer.name})">
+  <meta charset='utf-8'/>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <title>Отзыв на адвоката Иванов Иван Иванович / РИАДО</title>
+
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
+  <link href="../../public/assets/css/application.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../../public/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" media="screen" rel="stylesheet" type="text/css"/>
+
+  <script src="../../public/assets/vendor/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/jquery.linkedselect.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/global_functions.js" type="text/javascript"></script>
+</head>
+
+<body th:object="${feedback}">
+<div class="container" th:include="layout :: header_container">
+
+  <div class="row" id="header">
+    <div class="span12">
+      <img src="../../public/assets/images/header.jpg" />
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <li>
+            <a href="#">Главная</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container" th:include="layout :: content_container ('feedbacks/show')">
+  <div class="row" th:fragment="content">
+    <div class="span12">
+      <div class="row">
+        <div class="span8">
+          <div class="well">
+            <h1 class="well-header">
+              <span>Отзыв на адвоката: </span>
+              <a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a>
+            </h1>
+            <div class="inner-well">
+              <div>
+                <!--@thymesVar id="textHelper" type="info.riado.helpers.TextHelper"-->
+                <p th:utext="${textHelper.feedbackText(feedback.text)}">
+                  <br />Машину водить я научилась в детстве под руководством отца, любителя «быстрой езды».  Это была огромная неповоротливая ВолгГАЗ 2410. Потом, когда я получила водительские права, были иномарки. Люблю ехать за рулем, люблю дороги, люблю смотреть как доводят до совершенства мою любимую машину. Люблю загрузить детей и ехать за город, распевая хором песни, люблю ехать ночью на работу….Но…Как всегда это бывает, через 12 лет безаварийной ( с моей стороны) езды, вдруг приходит конец! Я попадаю в ситуацию, из которой, как мне кажется, выход один – пешеход.
+                  <br />Однажды в чудесный выходной день 25 мая раздается звонок мобильного телефона, и мужчина, представляясь сотрудником ДПС, просит меня вернуться на место ДТП, которое я , якобы, покинула 1 час назад.
+                  <br />Я, будучи законопослушной гражданкой и дисциплинированным водителем, немедленно возвращаюсь во двор соседнего дома, через 30 метров,  где проезжала час назад со своей коллегой по работе на работу же – в родильный дом. Надо сказать, что проезжала я этот соседний двор с некоторыми затруднениями, обусловленными припаркованными в два ряда с двух сторон машинами жильцов. Место было узкое, и, разъезжаясь с кремовой камри, я выполняла маневры «Выверни руль влево, сдай чуть-чуть назад, хорош, теперь руль вправо», и успешно справилась, что было отмечено моей подругой, какая же я молодец. В зеркало заднего вида я увидела, что гражданин из кремовой камри вышел из машины и, стоя к нам спиной, разговаривает с другим гражданином. Я спросила у своей коллеги, все ли нормально, так как пробираясь между машин разглядывать граждан мне было некогда. Лара (так зовут мою коллегу по работе, как и я, она врач акушер-гинеколог родильного дома) сказала: «Конечно, они стоят и разговаривают между собой, на нас не смотрят».
+                  <br />Прибывшая на место так называемого ДТП я с удивлением обнаружила авторитетного гражданина из камри в компании с 2 сотрудниками ДПС, которые были в ожидании меня и объяснили мне, что я, проезжая мимо камри, поцарапала зеркало и задний бампер. Я пыталась протестовать, что моя машина красная, а царапины белые, гражданин мне объясял как вырулить, меня не пытался остановить, но мои доводы были утоплены в бездне презрения к нарушителям ПДД т в шквале аргументов о моей вине безоговорочной и абсолютной. Я, к великому моему сожалению, впала в состояние оцепенения и отчаяния. Тут сотрудники пришли мне на помощь, передав слова гражданина из камри, что он готов забыть о случившемся за вознаграждение. Из состояния оцепенения  я пришла в состояние изумления, в котором подошла к гражданину из камри, чтобы уточнить, не ослышалась ли я. «Нет, не ослышались, мне очень хочется, чтобы у вас были проблемы» - так сказал гражданин из камри с улыбкой. На этом наша встреча  с компанией окончилась подписанием мною протокола-приговора-лишение прав-нет возможности ездить на машине.
+                  <br />Потом начался Липатников. Он дал мне красивую папку, а я ему вручила часть гонорара за начало ведения дела. Надо сказать, что начался Липатников случайным выбором среди запросов в интернете можно ли мой случай считать не абсолютным преступлением. Липатников начался на Кузнецком мосту в шикарном офисе, светскими манерами и модным костюмом. Я назвала про себя себя дурой, но решила, что выбирать уже некогда, когда приперт к стенке. Через 10 мин я отметила искреннюю заинтересованность, четкость суждений и лаконичность формулировок. Еще спустя 10 мин наличие явного практического опыта в сочетании с хорошим образованием и корректностью.  Договор заключен. «Ждать» сказал Липатников.
+                  <br />Дело продолжалось 7 месяцев. Я успела выйти замуж и похоронить мужа, переехать в другую квартиру, а дело продолжалось. Неизменным оставалось отношение Липатникова: он был всегда в курсе, на каком этапе находится рассмотрение дела, какие сроки, какие решения вынесены, он был всегда на связи, и не подвел ни разу ни в чем. На оно из судебных заседаний он не смог явиться и прибыл его помощник, совсем молодой человек, но иначе чем Сергей иванович его называть казалось недопустимым, настолько он вел себя грамотно и профессионально. Так в голливудских фильмах ведут себя адвокаты.
+                  <br />Дело закрыто 18.12.2014. Судья сохранил мне право управления автомобилем.  Это многотомный подарок к Новому Году, вместивший в себя тысячи листов, на которых запечатлен 7-месячный труд блестящего коллектива профессионалов под брендом «Адвокат Липатников А.А»
+                  <br />Порой человек попадает в тяжелые жизненные ситуации. Я искренне желаю всем такой помощи, какую мне оказал Липатников. Мне повезло, что он взял в свои руки, провел и так блестяще окончил эту запутанную историю. У моей истории был счастливый конец. Желаю всем получить поддержку и помощь такого качества и надежности. Желаю Вам здоровья и успехов, уважаемый Александр Александрович.   Искренне Ваша, Е. Татьяна.
+                </p>
+                <div class="bottom-margin-25"></div>
+                <p><strong>Пользователь не предоставил подтверждающих материалов</strong></p>
+              </div>
+              <div>&nbsp;<p class="date pull-right" th:text="*{{createdAt}}">24.12.2014</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="span4">
+          <div class="well">
+            <h2 class="well-header">Информация об адвокате</h2>
+            <ul class="unstyled" th:include="lawyers/info_block :: info_block(${feedback.lawyer})">
+              <li>Адвокат: <a href="../lawyers/show.html">Иванов Иван Иванович</a></li>
+              <li><a class="uncolored" href="../chambers/show.html">Федеральная палата адвокатов Российской Федерации</a></li>
+              <li>Реестровый номер: <span>01/01</span></li>
+            </ul>
+          </div>
+
+          <div class="well">
+            <h2 class="well-header">Добавить отзыв на адвоката</h2>
+            <p>Помогите другим доверителям найти подходящего адвоката или избежать некачественной юридической помощи.</p>
+            <a class="btn btn-primary btn-block" href="#">Добавить отзыв</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <span th:include="layout :: js_span">
+    <script src="../../public/assets/vendor/twitter-bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/wysihtml5-0.3.0_rc2/wysihtml5-0.3.0_rc2.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5.ru-RU.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+    <script src="../../public/assets/vendor/ajaxupload.3.5/ajaxupload.3.5.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/advocate_feedback_form.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/acol.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/profile.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/contacts.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/post_and_put_links.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/professions_tagsinput.js" type="text/javascript"></script>
+    <script src="../../public/assets/js/application.js" type="text/javascript"></script>
+  </span>
+</body>
+</html>
