@@ -52,6 +52,7 @@
               <div class="inner-well">
                 <ul class="navlist-side navlist-small">
                   <li><a href="#main" data-toggle="tab">Главная</a></li>
+                  <li><a href="#feedbacks" data-toggle="tab">Отзывы</a></li>
                   <li th:with="inactive=*{#lists.isEmpty(contacts)}">
                     <a href="#contacts" data-toggle="tab" th:class="${inactive} ? 'inactive'" th:href="${inactive} ? 'javascript:void(0);' : '#contacts'">Контакты</a>
                   </li>
@@ -89,6 +90,17 @@
                     Главная вкладка
                   </div>
                 </div>
+
+                <div id="feedbacks" class="tab-pane">
+                  <div class="inner-well">
+                    <h4>Новый отзыв</h4>
+                    <div class="bottom-margin-25"></div>
+                    <form id="feedbackForm" action="#" th:action="@{/lawyers/{id}/feedbacks(id=${lawyer.id})}" method="post" th:include="feedbacks/_form :: form('feedbackTemplate', 'Добавить отзыв')">
+                      Форма отзыва на адвоката
+                    </form>
+                  </div>
+                </div>
+
                 <div id="contacts" class="tab-pane" th:include="contacts/tab :: tab(${lawyer})">
                   <div class="inner-well">
                     <h4>Контактная информация</h4>

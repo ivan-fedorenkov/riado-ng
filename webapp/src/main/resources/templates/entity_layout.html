@@ -38,31 +38,33 @@
 
 </div>
 
-<div class="container" th:include="layout :: content_container('entity_layout')" th:fragment="entity_content_container(entity, entity_view_name)">
-  <div class="row" th:fragment="content">
-    <div class="span12">
-      <div class="well">
-        <!--@thymesVar id="entity" type="info.riado.domain.ContactsEntity"-->
-        <!--@thymesVar id="entity_view_name" type="java.lang.String"-->
-        <div th:include="${entity_view_name} :: entity_header">
-          <h1 class="well-header">Заголовок абстрактного объекта</h1>
-        </div>
-
-        <div id="top-contacts" class="inner-well" th:unless="${#lists.isEmpty(entity.contacts)}">
-          <ul class="inline">
-            <li th:each="contact : ${entity.contacts}">
-              <i r:contacts_icon_class="${contact.type}" class="icon-home"></i>
-              <small th:text="${contact.value}">123456, какой-то адрес ...</small>
-            </li>
-          </ul>
-        </div>
-
-        <div class="row">
-          <div class="span4" th:include="${entity_view_name} :: left_content">
-            <div class="inner-well">Контент слева</div>
+<div class="container" th:fragment="entity_content_container(entity, entity_view_name)">
+  <div th:include="layout :: content_container('entity_layout')">
+    <div class="row" th:fragment="content">
+      <div class="span12">
+        <div class="well">
+          <!--@thymesVar id="entity" type="info.riado.domain.ContactsEntity"-->
+          <!--@thymesVar id="entity_view_name" type="java.lang.String"-->
+          <div th:include="${entity_view_name} :: entity_header">
+            <h1 class="well-header">Заголовок абстрактного объекта</h1>
           </div>
-          <div class="span8-fixed" th:include="${entity_view_name} :: right_content">
-            <div class="inner-well">Контент справа</div>
+
+          <div id="top-contacts" class="inner-well" th:unless="${#lists.isEmpty(entity.contacts)}">
+            <ul class="inline">
+              <li th:each="contact : ${entity.contacts}">
+                <i r:contacts_icon_class="${contact.type}" class="icon-home"></i>
+                <small th:text="${contact.value}">123456, какой-то адрес ...</small>
+              </li>
+            </ul>
+          </div>
+
+          <div class="row">
+            <div class="span4" th:include="${entity_view_name} :: left_content">
+              <div class="inner-well">Контент слева</div>
+            </div>
+            <div class="span8-fixed" th:include="${entity_view_name} :: right_content">
+              <div class="inner-well">Контент справа</div>
+            </div>
           </div>
         </div>
       </div>

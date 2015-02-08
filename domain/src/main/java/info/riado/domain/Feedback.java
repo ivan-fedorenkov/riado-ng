@@ -1,18 +1,20 @@
 package info.riado.domain;
 
+import info.riado.utils.RandomKeyGenerator;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 /**
  * @author ivan
  */
 @Entity
 public class Feedback extends TextEntity {
+
+	private static final int EDITOR_KEY_LENGTH = 10;
 
 	@NotBlank
 	@Email
@@ -24,17 +26,25 @@ public class Feedback extends TextEntity {
 	private String editorKey;
 
 	@NotNull
-	private Boolean approved;
+	@Enumerated(EnumType.STRING)
+	private Status status = Status.NEW;
 
-	@NotNull
-	private Boolean evidenced;
+	private boolean evidenced;
 
-	@NotNull
-	private Boolean hidePersonalInfo;
+	private boolean hidePersonalInfo = true;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Lawyer lawyer;
+
+	public boolean canBeEdited(String editorKey) {
+		return Objects.equals(this.editorKey, editorKey);
+	}
+
+	@PrePersist
+	private void prePersist() {
+		editorKey = RandomKeyGenerator.generateKey(RandomKeyGenerator.VALID_URL_SYMBOLS, EDITOR_KEY_LENGTH);
+	}
 
 	public String getEmail() {
 		return email;
@@ -70,27 +80,27 @@ public class Feedback extends TextEntity {
 		this.editorKey = editorKey;
 	}
 
-	public Boolean getApproved() {
-		return approved;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setApproved(Boolean approved) {
-		this.approved = approved;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
-	public Boolean getEvidenced() {
+	public boolean isEvidenced() {
 		return evidenced;
 	}
 
-	public void setEvidenced(Boolean evidenced) {
+	public void setEvidenced(boolean evidenced) {
 		this.evidenced = evidenced;
 	}
 
-	public Boolean getHidePersonalInfo() {
+	public boolean isHidePersonalInfo() {
 		return hidePersonalInfo;
 	}
 
-	public void setHidePersonalInfo(Boolean hidePersonalInfo) {
+	public void setHidePersonalInfo(boolean hidePersonalInfo) {
 		this.hidePersonalInfo = hidePersonalInfo;
 	}
 
@@ -101,4 +111,9 @@ public class Feedback extends TextEntity {
 	public void setLawyer(Lawyer lawyer) {
 		this.lawyer = lawyer;
 	}
+
+	public enum Status {
+		NEW, APPROVED, REJECTED
+	}
+
 }

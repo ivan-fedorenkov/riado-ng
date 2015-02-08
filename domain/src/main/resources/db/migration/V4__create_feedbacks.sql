@@ -7,7 +7,7 @@ CREATE TABLE `feedback`(
   `text` CLOB NOT NULL,
   `editor_key` VARCHAR(20) DEFAULT NULL,
 
-  `approved` BOOLEAN DEFAULT FALSE,
+  `status` VARCHAR(20) NOT NULL,
   `evidenced` BOOLEAN DEFAULT FALSE,
   `hide_personal_info` BOOLEAN DEFAULT TRUE,
 

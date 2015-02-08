@@ -12,7 +12,7 @@ public class TextHelper {
 	private static final Pattern HTML_PATTERN = Pattern.compile("<.*?>", Pattern.MULTILINE | Pattern.DOTALL);
 	private static final Pattern LINK_PATTERN = Pattern.compile("<a(.*?)href\\s*=\\s*['\"](.*?)['\"](.*?)>(.*?)</a>",
 		Pattern.MULTILINE | Pattern.DOTALL);
-	private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\\n");
+	private static final Pattern NEW_LINE_PATTERN = Pattern.compile("[\\n\\r]+");
 
 	public String trim(String text, int trimLength) {
 		if (text.length() > trimLength) {
@@ -53,7 +53,7 @@ public class TextHelper {
 	}
 
 	public String htmlNL(String text) {
-		return NEW_LINE_PATTERN.matcher(text).replaceAll("<br></br>");
+		return NEW_LINE_PATTERN.matcher(text).replaceAll("<br />");
 	}
 
 	public String preview(String text) {

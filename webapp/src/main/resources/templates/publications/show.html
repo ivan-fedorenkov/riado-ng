@@ -47,7 +47,8 @@
           <div class="well">
             <h1 class="well-header" th:text="*{title}">К вопросам совершенствования системы уголовно-правового воздействия</h1>
             <div class="inner-well">
-              <div th:utext="*{text}">
+              <!--@thymesVar id="textHelper" type="info.riado.helpers.TextHelper"-->
+              <div th:utext="${textHelper.escapeIndex(publication.text)}">
                 <p>Председатель Президиума Коллегии адвокатов «Сфера»</p>
                 <p>Кандидат юридических наук, доцент кафедры уголовного права Вологодского государственного университета</p>
                 <p>К вопросам совершенствования системы уголовно-правового воздействия</p>

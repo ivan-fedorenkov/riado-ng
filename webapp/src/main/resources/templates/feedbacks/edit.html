@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:r="http://www.riado.info">
 <!--@thymesVar id="feedback" type="info.riado.domain.Feedback"-->
-<head th:include="layout :: head ('Отзыв на адвоката ' + ${feedback.lawyer.name})">
+<head th:include="layout :: head ('Редактирование отзыва')">
   <meta charset='utf-8'/>
   <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-  <title>Отзыв на адвоката Иванов Иван Иванович / РИАДО</title>
+  <title>Редактирование отзыва / РИАДО</title>
 
   <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
   <link href="../../public/assets/css/application.css" media="screen" rel="stylesheet" type="text/css"/>
@@ -39,16 +39,16 @@
 
 </div>
 
-<div class="container" th:include="layout :: content_container ('feedbacks/show')">
+<div class="container" th:include="layout :: content_container ('feedbacks/edit')">
   <div class="row" th:fragment="content">
     <div class="span12">
-      <div class="row">
-        <div class="span8">
-          <div class="well">
-            <h1 class="well-header">
-              <span>Отзыв на адвоката: </span>
-              <a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a>
-            </h1>
+      <div class="well">
+        <h1 class="well-header">
+          <span>Редактирование отзыва на адвоката: </span>
+          <a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a>
+        </h1>
+        <div class="row">
+          <div class="span8-fixed">
             <div class="inner-well" th:include="feedbacks/_feedback :: feedback(${feedback})">
               <div>
                 <p>
@@ -62,23 +62,23 @@
                   <br />Порой человек попадает в тяжелые жизненные ситуации. Я искренне желаю всем такой помощи, какую мне оказал Липатников. Мне повезло, что он взял в свои руки, провел и так блестяще окончил эту запутанную историю. У моей истории был счастливый конец. Желаю всем получить поддержку и помощь такого качества и надежности. Желаю Вам здоровья и успехов, уважаемый Александр Александрович.   Искренне Ваша, Е. Татьяна.
                 </p>
               </div>
+              <div>&nbsp;<p class="date pull-right">24.12.2014</p></div>
+            </div>
+
+            <div class="inner-well">
+              <form id="feedbackForm" action="#" th:action="@{/feedbacks/{id}(id=${feedback.id},editorKey=${feedback.editorKey})}" th:method="patch" th:include="feedbacks/_form :: form('feedback', 'Сохранить отзыв')">
+                Форма редактирования отзыва
+              </form>
             </div>
           </div>
-        </div>
-        <div class="span4">
-          <div class="well">
-            <h2 class="well-header">Информация об адвокате</h2>
-            <ul class="unstyled" th:include="lawyers/info_block :: info_block(${feedback.lawyer})">
-              <li>Адвокат: <a href="../lawyers/show.html">Иванов Иван Иванович</a></li>
-              <li><a class="uncolored" href="../chambers/show.html">Федеральная палата адвокатов Российской Федерации</a></li>
-              <li>Реестровый номер: <span>01/01</span></li>
-            </ul>
-          </div>
-
-          <div class="well">
-            <h2 class="well-header">Добавить отзыв на адвоката</h2>
-            <p>Помогите другим доверителям найти подходящего адвоката или избежать некачественной юридической помощи.</p>
-            <a class="btn btn-primary btn-block" href="#">Добавить отзыв</a>
+          <div class="span4">
+            <div class="inner-well">
+              <div class="inner-well-header">Отзыв</div>
+              <ul class="unstyled">
+                <li><strong>Создан:</strong> <th:block th:text="${{feedback.createdAt}}">31.01.2015</th:block></li>
+                <li><strong>Статус:</strong> <th:block th:text="${{feedback.status}}">Ожидает модерации</th:block></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

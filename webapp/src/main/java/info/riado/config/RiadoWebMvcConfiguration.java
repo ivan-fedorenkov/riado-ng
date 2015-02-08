@@ -1,5 +1,6 @@
 package info.riado.config;
 
+import info.riado.format.FeedbackStatusFormatter;
 import info.riado.format.FormationFormFormatter;
 import info.riado.format.LawyerStatusFormatter;
 import info.riado.interceptors.HelpersInterceptor;
@@ -18,6 +19,7 @@ public class RiadoWebMvcConfiguration extends WebMvcConfigurerAdapter {
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addFormatter(new FormationFormFormatter());
 		registry.addFormatter(new LawyerStatusFormatter());
+		registry.addFormatter(new FeedbackStatusFormatter());
 	}
 
 	@Override
