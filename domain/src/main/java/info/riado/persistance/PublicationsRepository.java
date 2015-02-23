@@ -16,6 +16,4 @@ public interface PublicationsRepository extends JpaRepository<Publication, Long>
 
 	List<Publication> findPublicationsByLawyer(Lawyer lawyer, Pageable pageable);
 
-	Pageable LAST10 = new PageRequest(0, 10, Sort.Direction.DESC, "id");
-
 }

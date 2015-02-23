@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:r="http://www.riado.info">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head th:include="layout :: head ('Отзывы на адвокатов')">
   <meta charset='utf-8'/>
   <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
@@ -45,11 +45,11 @@
         <div class="span8">
           <div class="well">
             <h1 class="well-header">Отзывы на адвокатов</h1>
-            <div class="inner-well" th:each="feedback : ${feedbacks}" th:object="${feedback}">
-              <span class="date" th:text="*{{createdAt}}">01.01.2014</span>
-              <h4>Отзыв на адвоката: <a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a></h4>
-              <p th:utext="${textHelper.feedbackPreview(feedback.text)}">Превью отзыва</p>
-              <p><strong><a href="show.html" r:href="${feedback}">Подробнее</a></strong></p>
+            <!--@thymesVar id="feedbacks" type="org.springframework.data.domain.Page<info.riado.domain.Feedback>"-->
+            <div class="inner-well" th:include="feedbacks/_preview :: preview" th:each="record : ${feedbacks}">
+              <h4>Превью отзыва на адвоката</h4>
+              <p>Превью отзыва</p>
+              <p><strong><a href="show.html">Подробнее</a></strong></p>
             </div>
 
             <div class="pagination pagination-centered" th:include="pagination :: pagination(${feedbacks}, '/feedbacks')">

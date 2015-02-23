@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: head ('Вход в учётную запись')">
+  <meta charset='utf-8'/>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <title>Вход в учётную запись / РИАДО</title>
+
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
+  <link href="../../public/assets/css/application.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="../../public/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.css" media="screen" rel="stylesheet" type="text/css"/>
+
+  <script src="../../public/assets/vendor/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/jquery.linkedselect.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/global_functions.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="container" th:include="layout :: header_container">
+
+  <div class="row" id="header">
+    <div class="span12">
+      <img src="../../public/assets/images/header.jpg" />
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <li>
+            <a href="#">Главная</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container" th:include="layout :: content_container ('sessions/new')">
+  <div class="row" th:fragment="content">
+    <div class="span12">
+      <div class='well'>
+        <h1 class="well-header">Вход в учётную запись</h1>
+        <div class="bottom-margin-25"></div>
+        <form id="loginForm" class="form-horizontal" method="post" action="#" th:action="${loginUrl}">
+          <div class="control-group ">
+            <label for="login" class="control-label">Логин</label>
+            <div class="controls">
+              <input id="login" name="username" type="text" />
+            </div>
+          </div>
+
+          <div class="control-group ">
+            <label for="password" class="control-label">Пароль</label>
+            <div class="controls">
+              <input id="password" name="password" type="password" />
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+              <button type="submit" class="btn btn-primary">Вход</button>
+              <a href="#" class="btn">Забыли пароль?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<span th:include="layout :: js_span">
+  <script src="../../public/assets/vendor/twitter-bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../public/assets/vendor/wysihtml5-0.3.0_rc2/wysihtml5-0.3.0_rc2.js" type="text/javascript"></script>
+  <script src="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js" type="text/javascript"></script>
+  <script src="../../public/assets/vendor/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5.ru-RU.js" type="text/javascript"></script>
+  <script src="../../public/assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+  <script src="../../public/assets/vendor/ajaxupload.3.5/ajaxupload.3.5.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/advocate_feedback_form.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/acol.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/profile.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/contacts.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/post_and_put_links.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/professions_tagsinput.js" type="text/javascript"></script>
+  <script src="../../public/assets/js/application.js" type="text/javascript"></script>
+</span>
+</body>
+</html>

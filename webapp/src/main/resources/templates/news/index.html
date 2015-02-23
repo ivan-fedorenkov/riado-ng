@@ -45,11 +45,11 @@
         <div class="span8">
           <div class="well">
             <h1 class="well-header">Новости</h1>
-            <div class="inner-well" th:each="record : ${newsList}" th:object="${record}">
-              <span class="date" th:text="*{{createdAt}}">01.01.2014</span>
-              <h4><a class="uncolored" href="#" r:href="${record}" th:text="*{title}">Заголовок новости</a></h4>
-              <p th:text="*{preview}">Превью новости</p>
-              <p><strong><a href="#" r:href="${record}">Подробнее</a></strong></p>
+            <div class="inner-well" th:each="record : ${newsList}" th:include="news/_preview :: preview">
+              <span class="date">01.01.2014</span>
+              <h4><a class="uncolored" href="#">Заголовок новости</a></h4>
+              <p>Превью новости</p>
+              <p><strong><a href="#">Подробнее</a></strong></p>
             </div>
 
             <div class="pagination pagination-centered" th:include="pagination :: pagination(${newsList}, '/news')">

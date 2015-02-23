@@ -34,7 +34,7 @@ public class FeedbacksController {
 	public String index(Model model,
         @PageableDefault(sort = "id", direction = Sort.Direction.DESC, size = 5) Pageable pageable)
 	{
-		model.addAttribute("feedbacks", repository.findAll(pageable));
+		model.addAttribute("feedbacks", repository.findApprovedFeedbacks(pageable));
 		return "feedbacks/index";
 	}
 

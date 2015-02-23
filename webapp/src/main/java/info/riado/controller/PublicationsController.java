@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
+import static info.riado.persistance.TextEntityRepository.*;
+
 /**
  * @author ivan
  */
@@ -39,8 +41,7 @@ public class PublicationsController {
 	@RequestMapping(value = "/{publication}", method = RequestMethod.GET)
 	public String get(Model model, @PathVariable Publication publication) {
 		model.addAttribute(publication);
-		List<Publication> last10 = repository.findPublicationsByLawyer(publication.getLawyer(),
-			PublicationsRepository.LAST10);
+		List<Publication> last10 = repository.findPublicationsByLawyer(publication.getLawyer(), RECENT_10);
 		if (!last10.isEmpty())
 			last10.remove(publication);
 		model.addAttribute("last10publications", last10);

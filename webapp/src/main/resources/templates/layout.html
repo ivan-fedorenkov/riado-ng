@@ -29,19 +29,19 @@
         <div class="container">
           <ul class="nav">
             <li>
-              <a th:href="@{/MainPage}" href="#">Главная</a>
+              <a th:href="@{/}" href="#">Главная</a>
             </li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle='dropdown' href="#">Содержание <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>
-                  <a th:href="@{/FeedbacksFeed}" href="#">Отзывы</a>
+                  <a th:href="@{/feedbacks}" href="#">Отзывы</a>
                 </li>
                 <li>
                   <a th:href="@{/sanction.html}" href="#">Санкции</a>
                 </li>
                 <li>
-                  <a th:href="@{/NewsFeed}" href="#">Новости</a>
+                  <a th:href="@{/news}" href="#">Новости</a>
                 </li>
                 <li>
                   <a th:href="@{/BlogFeed}" href="#">Блог</a>
@@ -106,7 +106,7 @@
               <a th:href="@{/registration.html}" href="#">Регистрация</a>
             </li>
             <li>
-              <a th:href="@{/session/new}" href="#">Вход</a>
+              <a th:href="@{/sessions/new}" href="#">Вход</a>
             </li>
           </ul>
         </div>

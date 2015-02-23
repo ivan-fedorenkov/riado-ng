@@ -45,14 +45,14 @@
         <div class="span8">
           <div class="well">
             <h1 class="well-header">Публикации адвокатов</h1>
-            <div class="inner-well" th:each="publication : ${publications}" th:object="${publication}">
-              <span class="date" th:text="*{{createdAt}}">01.01.2014</span>
+            <div class="inner-well" th:each="record : ${publications}" th:include="publications/_preview :: preview">
+              <span class="date">01.01.2014</span>
               <blockquote>
-                <h4><a href="#" r:href="${publication}" class="uncolored" th:text="*{title}">Заголовок публикации</a></h4>
-                <small><a href="../lawyers/show.html" r:href="*{lawyer}" th:text="*{lawyer.name}">Иванов Иван Иванович</a></small>
+                <h4><a href="#" class="uncolored" >Заголовок публикации</a></h4>
+                <small><a href="../lawyers/show.html">Иванов Иван Иванович</a></small>
               </blockquote>
-              <p th:text="${textHelper.preview(publication.text)}">Превью публикации</p>
-              <p><strong><a href="show.html" r:href="${publication}">Подробнее</a></strong></p>
+              <p>Превью публикации</p>
+              <p><strong><a href="show.html">Подробнее</a></strong></p>
             </div>
 
             <div class="pagination pagination-centered" th:include="pagination :: pagination(${publications}, '/publications')">
